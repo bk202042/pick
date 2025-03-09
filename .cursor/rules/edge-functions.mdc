@@ -1,6 +1,6 @@
 ---
 description: Coding rules for Supabase Edge Functions
-globs: **/*.ts
+globs: supabase/functions/**/*.ts
 alwaysApply: false
 ---
 
