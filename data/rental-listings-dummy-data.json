@@ -1,0 +1,160 @@
+{
+  "rentalListings": [
+    {
+      "id": "TR2024001",
+      "propertyType": "Apartment",
+      "address": {
+        "streetAddress": "123 Main St",
+        "city": "San Francisco",
+        "state": "CA",
+        "zipCode": "94105",
+        "neighborhood": "SoMa"
+      },
+      "pricing": {
+        "monthlyRent": 3500,
+        "securityDeposit": 3500,
+        "utilities": ["Water", "Garbage"],
+        "utilitiesCost": 150
+      },
+      "details": {
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "squareFeet": 1200,
+        "parking": true,
+        "parkingFee": 250,
+        "petFriendly": true,
+        "petDeposit": 500
+      },
+      "amenities": [
+        "In-unit Laundry",
+        "Fitness Center",
+        "Swimming Pool",
+        "Elevator",
+        "Gym"
+      ],
+      "leaseTerms": {
+        "minimumLease": 12,
+        "availableDate": "2024-04-15",
+        "applicationFee": 75
+      },
+      "contactInfo": {
+        "propertyManagement": "Urban Living Realty",
+        "contactPhone": "(415) 555-1234",
+        "contactEmail": "rentals@urbanlivingrealty.com"
+      },
+      "location": {
+        "latitude": 37.7749,
+        "longitude": -122.4194,
+        "nearbyTransportation": [
+          "BART Station - 0.2 miles",
+          "Muni Bus Stop - 0.1 miles"
+        ]
+      }
+    },
+    {
+      "id": "TR2024002",
+      "propertyType": "House",
+      "address": {
+        "streetAddress": "456 Oak Road",
+        "city": "Austin",
+        "state": "TX",
+        "zipCode": "78701",
+        "neighborhood": "East Austin"
+      },
+      "pricing": {
+        "monthlyRent": 2800,
+        "securityDeposit": 2800,
+        "utilities": ["Water"],
+        "utilitiesCost": 100
+      },
+      "details": {
+        "bedrooms": 3,
+        "bathrooms": 2.5,
+        "squareFeet": 1800,
+        "parking": true,
+        "parkingFee": 0,
+        "petFriendly": true,
+        "petDeposit": 750
+      },
+      "amenities": [
+        "Backyard",
+        "Garage",
+        "Central Heating",
+        "Central AC"
+      ],
+      "leaseTerms": {
+        "minimumLease": 12,
+        "availableDate": "2024-05-01",
+        "applicationFee": 50
+      },
+      "contactInfo": {
+        "propertyManagement": "Texas Home Rentals",
+        "contactPhone": "(512) 555-5678",
+        "contactEmail": "info@texashomerentals.com"
+      },
+      "location": {
+        "latitude": 30.2672,
+        "longitude": -97.7431,
+        "nearbyTransportation": [
+          "Bus Stop - 0.3 miles",
+          "Light Rail - 0.5 miles"
+        ]
+      }
+    },
+    {
+      "id": "TR2024003",
+      "propertyType": "Condo",
+      "address": {
+        "streetAddress": "789 Riverside Dr",
+        "city": "New York",
+        "state": "NY",
+        "zipCode": "10025",
+        "neighborhood": "Upper West Side"
+      },
+      "pricing": {
+        "monthlyRent": 4200,
+        "securityDeposit": 4200,
+        "utilities": ["Water", "Internet"],
+        "utilitiesCost": 200
+      },
+      "details": {
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "squareFeet": 850,
+        "parking": false,
+        "parkingFee": 0,
+        "petFriendly": false,
+        "petDeposit": 0
+      },
+      "amenities": [
+        "Doorman",
+        "Elevator",
+        "Fitness Center",
+        "Rooftop Terrace"
+      ],
+      "leaseTerms": {
+        "minimumLease": 6,
+        "availableDate": "2024-04-20",
+        "applicationFee": 100
+      },
+      "contactInfo": {
+        "propertyManagement": "NYC Living Solutions",
+        "contactPhone": "(212) 555-9012",
+        "contactEmail": "rentals@nyclivingsolutions.com"
+      },
+      "location": {
+        "latitude": 40.7870,
+        "longitude": -73.9754,
+        "nearbyTransportation": [
+          "Subway Station - 0.1 miles",
+          "Bus Stop - 0.2 miles"
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "totalListings": 3,
+    "lastUpdated": "2024-03-05T12:00:00Z",
+    "dataSource": "Dummy Rental Listings"
+  }
+}
