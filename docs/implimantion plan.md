@@ -59,7 +59,7 @@ Implement role-based authentication (user/agent/admin)
 Create middleware for protected routes
 Set up proper authentication flows with Supabase
 
-![workflow](/Users/macbookair/Documents/Cline/cline01.png)
+![workflow](/Users/macbookair/pick/docs/cline01.png)
 
 Phase 2: Core Functionality
     1.Database Schema
@@ -82,7 +82,7 @@ Build listing CRUD operations
 Implement image upload functionality
 Create listing approval workflow
 
-![data flow](/Users/macbookair/Documents/Cline/cline02.png)
+![data flow](/Users/macbookair/pick/docs/cline02.png)
 
 Phase 3: UI & User Experience
 Public Facing Features
@@ -106,7 +106,7 @@ Build user management features
 Create listing approval UI
 Implement site statistics
 
-![diagram](/Users/macbookair/Documents/Cline/cline03.png)
+![diagram](/Users/macbookair/pick/docs/cline03.png)
 
 Phase 4: Advanced Features & Optimization
 Map Integration
@@ -157,7 +157,7 @@ src/
     ├── listings.ts     # Listing-related types
     └── users.ts        # User-related types
 
-![data flow](/Users/macbookair/Documents/Cline/cline04.png)
+![data flow](/Users/macbookair/pick/docs/cline04.png)
 
 Implementation Timeline
 Week 1: Foundation
