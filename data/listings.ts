@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { createClient } from './supabase/server';
 import { RentalListing, RentalListingsData } from '@/types/listings';
 import dummyData from './rental-listings-dummy-data.json';
+import { cache } from 'react';
 
 /**
  * Retrieves all property listings
@@ -51,7 +52,7 @@ export async function getListings({
  * In development, returns dummy data
  * In production, would fetch from Supabase
  */
-export async function getListingById(id: string): Promise<RentalListing> {
+export const getListingById = cache(async (id: string): Promise<RentalListing> => {
   // For now, use the dummy data
   const data = dummyData as RentalListingsData;
 
@@ -62,18 +63,18 @@ export async function getListingById(id: string): Promise<RentalListing> {
   }
 
   return listing;
-}
+});
 
 /**
  * Retrieves featured property listings
  * In development, returns dummy data
  * In production, would fetch from Supabase with a featured flag
  */
-export async function getFeaturedListings(limit = 3): Promise<RentalListing[]> {
+export const getFeaturedListings = cache(async (limit = 6): Promise<RentalListing[]> => {
   // For now, just return the first few listings from dummy data
   const data = dummyData as RentalListingsData;
   return data.rentalListings.slice(0, limit);
-}
+});
 
 /**
  * Counts the total number of listings with optional filters

@@ -1,16 +1,17 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getListingById, getFeaturedListings } from '@/data/listings';
 import { formatCurrency, formatDate } from '@/lib/utils';
 import { ListingGrid } from '@/components/listings/listing-grid';
 
-interface ListingPageProps {
+type ListingPageProps = {
   params: {
     id: string;
   };
-}
+};
 
-export async function generateMetadata({ params }: ListingPageProps) {
+export async function generateMetadata({ params }: ListingPageProps): Promise<Metadata> {
   try {
     const listing = await getListingById(params.id);
 
