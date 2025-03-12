@@ -1,5 +1,4 @@
 import { signInAction } from '@/app/actions';
-import { FormMessage } from '@/components/form-message';
 import { SubmitButton } from '@/components/submit-button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -11,9 +10,7 @@ export default function SignInPage() {
       <section>
         <hgroup className="mb-6">
           <h1 className="mb-2 text-2xl font-bold">Sign In</h1>
-          <p className="text-muted-foreground">
-            Enter your credentials to access your account
-          </p>
+          <p className="text-muted-foreground">Enter your credentials to access your account</p>
         </hgroup>
       </section>
 
