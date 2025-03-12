@@ -1,44 +1,48 @@
-import { signInAction } from "@/app/actions";
-import { FormMessage, Message } from "@/components/form-message";
-import { SubmitButton } from "@/components/submit-button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import Link from "next/link";
+import { signInAction } from '@/app/actions';
+import { FormMessage } from '@/components/form-message';
+import { SubmitButton } from '@/components/submit-button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import Link from 'next/link';
 
-export default async function Login(props: { searchParams: Promise<Message> }) {
-  const searchParams = await props.searchParams;
+export default function SignInPage() {
   return (
-    <form className="flex-1 flex flex-col min-w-64">
-      <h1 className="text-2xl font-medium">Sign in</h1>
-      <p className="text-sm text-foreground">
-        Don't have an account?{" "}
-        <Link className="text-foreground font-medium underline" href="/sign-up">
-          Sign up
-        </Link>
-      </p>
-      <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
-        <Label htmlFor="email">Email</Label>
-        <Input name="email" placeholder="you@example.com" required />
-        <div className="flex justify-between items-center">
-          <Label htmlFor="password">Password</Label>
-          <Link
-            className="text-xs text-foreground underline"
-            href="/forgot-password"
-          >
-            Forgot Password?
-          </Link>
+    <div className="w-full max-w-md">
+      <section>
+        <hgroup className="mb-6">
+          <h1 className="mb-2 text-2xl font-bold">Sign In</h1>
+          <p className="text-muted-foreground">
+            Enter your credentials to access your account
+          </p>
+        </hgroup>
+      </section>
+
+      <form action={signInAction} className="flex flex-col gap-4">
+        <div className="space-y-2">
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" name="email" type="email" required />
         </div>
-        <Input
-          type="password"
-          name="password"
-          placeholder="Your password"
-          required
-        />
-        <SubmitButton pendingText="Signing In..." formAction={signInAction}>
-          Sign in
-        </SubmitButton>
-        <FormMessage message={searchParams} />
-      </div>
-    </form>
+
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <Label htmlFor="password">Password</Label>
+            <Link href="/forgot-password" className="text-sm underline">
+              Forgot password?
+            </Link>
+          </div>
+          <Input id="password" name="password" type="password" required />
+        </div>
+
+        <div className="mt-4 flex flex-col gap-6">
+          <SubmitButton>Sign In</SubmitButton>
+          <div className="text-sm text-center">
+            Don&apos;t have an account?{' '}
+            <Link href="/sign-up" className="underline">
+              Sign up
+            </Link>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 }
