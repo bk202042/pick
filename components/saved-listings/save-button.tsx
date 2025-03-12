@@ -83,11 +83,7 @@ export function SaveButton({
       disabled={isLoading}
       aria-label={saved ? 'Remove from saved listings' : 'Save to your listings'}
     >
-      {saved ? (
-        <BookmarkCheck className="h-5 w-5" />
-      ) : (
-        <Bookmark className="h-5 w-5" />
-      )}
+      {saved ? <BookmarkCheck className="h-5 w-5" /> : <Bookmark className="h-5 w-5" />}
     </Button>
   );
 }

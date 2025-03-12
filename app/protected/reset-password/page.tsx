@@ -1,37 +1,33 @@
-import { resetPasswordAction } from "@/app/actions";
-import { FormMessage, Message } from "@/components/form-message";
-import { SubmitButton } from "@/components/submit-button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { resetPasswordAction } from '@/app/actions';
+import { FormMessage } from '@/components/form-message';
+import { SubmitButton } from '@/components/submit-button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
-export default async function ResetPassword(props: {
-  searchParams: Promise<Message>;
-}) {
-  const searchParams = await props.searchParams;
+export default async function ResetPasswordPage({ searchParams: Message }) {
   return (
-    <form className="flex flex-col w-full max-w-md p-4 gap-2 [&>input]:mb-4">
-      <h1 className="text-2xl font-medium">Reset password</h1>
-      <p className="text-sm text-foreground/60">
-        Please enter your new password below.
-      </p>
-      <Label htmlFor="password">New password</Label>
-      <Input
-        type="password"
-        name="password"
-        placeholder="New password"
-        required
-      />
-      <Label htmlFor="confirmPassword">Confirm password</Label>
-      <Input
-        type="password"
-        name="confirmPassword"
-        placeholder="Confirm password"
-        required
-      />
-      <SubmitButton formAction={resetPasswordAction}>
-        Reset password
-      </SubmitButton>
-      <FormMessage message={searchParams} />
-    </form>
+    <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
+      <form
+        className="animate-in flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
+        action={resetPasswordAction}
+      >
+        <h1 className="text-2xl font-semibold tracking-tight">Reset Password</h1>
+        <p className="text-sm text-muted-foreground mb-4">Please enter your new password below.</p>
+        <FormMessage searchParams={searchParams} />
+        <div className="grid gap-2">
+          <Label htmlFor="password">Password</Label>
+          <Input type="password" name="password" placeholder="New password" required />
+        </div>
+
+        <div className="grid gap-2">
+          <Label htmlFor="confirmPassword">Confirm Password</Label>
+          <Input type="password" name="confirmPassword" placeholder="Confirm password" required />
+        </div>
+
+        <div className="mt-4">
+          <SubmitButton className="w-full">Reset password</SubmitButton>
+        </div>
+      </form>
+    </div>
   );
 }

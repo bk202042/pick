@@ -14,11 +14,7 @@ export const metadata = {
   description: 'Browse our selection of properties for rent or sale',
 };
 
-export default async function ListingsPage({
-  searchParams,
-}: {
-  searchParams: SearchParams;
-}) {
+export default async function ListingsPage({ searchParams }: { searchParams: SearchParams }) {
   return (
     <div className="container mx-auto py-10 px-4">
       <h1 className="text-3xl font-bold mb-8">Property Listings</h1>

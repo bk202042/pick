@@ -55,11 +55,16 @@ export function ListingGrid({ listings }: ListingGridProps) {
               {listing.address.city}, {listing.address.state}
             </p>
             <p className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-3">
-              {formatCurrency(listing.pricing.monthlyRent)}<span className="text-sm font-normal text-gray-600 dark:text-gray-400">/mo</span>
+              {formatCurrency(listing.pricing.monthlyRent)}
+              <span className="text-sm font-normal text-gray-600 dark:text-gray-400">/mo</span>
             </p>
             <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-300">
-              <span>{listing.details.bedrooms} {listing.details.bedrooms === 1 ? 'Bed' : 'Beds'}</span>
-              <span>{listing.details.bathrooms} {listing.details.bathrooms === 1 ? 'Bath' : 'Baths'}</span>
+              <span>
+                {listing.details.bedrooms} {listing.details.bedrooms === 1 ? 'Bed' : 'Beds'}
+              </span>
+              <span>
+                {listing.details.bathrooms} {listing.details.bathrooms === 1 ? 'Bath' : 'Baths'}
+              </span>
               <span>{listing.details.squareFeet.toLocaleString()} sqft</span>
             </div>
           </div>

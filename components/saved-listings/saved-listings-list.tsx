@@ -76,7 +76,9 @@ export function SavedListingsList({ savedListings }: SavedListingsListProps) {
                 {saved.listing.title}
               </Link>
             </CardTitle>
-            <p className="text-lg font-bold text-primary">{priceFormatter.format(saved.listing.price)}</p>
+            <p className="text-lg font-bold text-primary">
+              {priceFormatter.format(saved.listing.price)}
+            </p>
           </CardHeader>
           <CardContent className="p-4 pt-0">
             <p className="text-sm text-muted-foreground mb-2">
@@ -85,7 +87,8 @@ export function SavedListingsList({ savedListings }: SavedListingsListProps) {
             <div className="flex items-center gap-4 text-sm">
               {saved.listing.bedrooms && (
                 <span>
-                  <strong>{saved.listing.bedrooms}</strong> {saved.listing.bedrooms === 1 ? 'Bed' : 'Beds'}
+                  <strong>{saved.listing.bedrooms}</strong>{' '}
+                  {saved.listing.bedrooms === 1 ? 'Bed' : 'Beds'}
                 </span>
               )}
               {saved.listing.bathrooms && (

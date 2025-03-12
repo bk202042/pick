@@ -33,14 +33,15 @@ export default async function ListingDetailsPage({ params }: ListingPageProps) {
     const placeholderImage = 'https://placehold.co/1200x800/e2e8f0/475569?text=Property+Image';
 
     // Similar listings (featured listings for now)
-    const similarListings = (await getFeaturedListings(3)).filter(l => l.id !== listing.id);
+    const similarListings = (await getFeaturedListings(3)).filter((l) => l.id !== listing.id);
 
     return (
       <div className="container mx-auto py-10 px-4">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">{listing.address.streetAddress}</h1>
           <p className="text-gray-600 dark:text-gray-300">
-            {listing.address.city}, {listing.address.state} {listing.address.zipCode} - {listing.address.neighborhood}
+            {listing.address.city}, {listing.address.state} {listing.address.zipCode} -{' '}
+            {listing.address.neighborhood}
           </p>
         </div>
 
@@ -60,12 +61,14 @@ export default async function ListingDetailsPage({ params }: ListingPageProps) {
             <div className="flex flex-wrap gap-4 mb-8">
               <div className="bg-blue-50 dark:bg-blue-900/30 px-4 py-2 rounded-md flex items-center">
                 <span className="text-blue-700 dark:text-blue-300 font-medium">
-                  {listing.details.bedrooms} {listing.details.bedrooms === 1 ? 'Bedroom' : 'Bedrooms'}
+                  {listing.details.bedrooms}{' '}
+                  {listing.details.bedrooms === 1 ? 'Bedroom' : 'Bedrooms'}
                 </span>
               </div>
               <div className="bg-blue-50 dark:bg-blue-900/30 px-4 py-2 rounded-md flex items-center">
                 <span className="text-blue-700 dark:text-blue-300 font-medium">
-                  {listing.details.bathrooms} {listing.details.bathrooms === 1 ? 'Bathroom' : 'Bathrooms'}
+                  {listing.details.bathrooms}{' '}
+                  {listing.details.bathrooms === 1 ? 'Bathroom' : 'Bathrooms'}
                 </span>
               </div>
               <div className="bg-blue-50 dark:bg-blue-900/30 px-4 py-2 rounded-md flex items-center">
@@ -95,8 +98,17 @@ export default async function ListingDetailsPage({ params }: ListingPageProps) {
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 {listing.amenities.map((amenity) => (
                   <li key={amenity} className="flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 text-green-500"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                     <span className="text-gray-700 dark:text-gray-300">{amenity}</span>
                   </li>
@@ -110,11 +122,14 @@ export default async function ListingDetailsPage({ params }: ListingPageProps) {
               <div className="mb-4">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                   {formatCurrency(listing.pricing.monthlyRent)}
-                  <span className="text-sm font-normal text-gray-600 dark:text-gray-400">/month</span>
+                  <span className="text-sm font-normal text-gray-600 dark:text-gray-400">
+                    /month
+                  </span>
                 </h3>
                 {listing.pricing.utilities.length > 0 && (
                   <p className="text-gray-600 dark:text-gray-300 text-sm mt-1">
-                    +{formatCurrency(listing.pricing.utilitiesCost)} est. for {listing.pricing.utilities.join(', ')}
+                    +{formatCurrency(listing.pricing.utilitiesCost)} est. for{' '}
+                    {listing.pricing.utilities.join(', ')}
                   </p>
                 )}
                 <div className="mt-2 text-sm text-gray-600 dark:text-gray-300">
@@ -136,7 +151,9 @@ export default async function ListingDetailsPage({ params }: ListingPageProps) {
                 <div className="text-sm space-y-2">
                   <p className="font-medium">{listing.contactInfo.propertyManagement}</p>
                   <p>{listing.contactInfo.contactPhone}</p>
-                  <p className="text-blue-600 dark:text-blue-400">{listing.contactInfo.contactEmail}</p>
+                  <p className="text-blue-600 dark:text-blue-400">
+                    {listing.contactInfo.contactEmail}
+                  </p>
                 </div>
               </div>
 
