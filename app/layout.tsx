@@ -1,6 +1,6 @@
 import { DeployButton } from '@/components/deploy-button';
 import { EnvVarWarning } from '@/components/env-var-warning';
-import { HeaderAuth } from '@/components/header-auth';
+import HeaderAuth from '@/components/header-auth';
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import { checkEnvVar } from '@/utils/supabase/check-env-vars';
 import { Inter } from 'next/font/google';
