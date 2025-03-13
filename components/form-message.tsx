@@ -15,14 +15,15 @@ export function FormMessage({ message }: FormMessageProps) {
     return <p className="mt-4 p-4 bg-red-50 text-red-700 rounded-md">{message.error}</p>;
   }
 
-  return <p className="mt-4 p-4 bg-blue-50 text-blue-700 rounded-md">{message.message}</p>;
+  // All cases are handled above, but TypeScript requires a return
+  return null;
 }
 
 export interface FormMessageFromSearchParamsProps {
   searchParams?: { message?: string; type?: string };
 }
 
-export function FormMessage({ searchParams }: FormMessageFromSearchParamsProps) {
+export function FormMessageFromSearchParams({ searchParams }: FormMessageFromSearchParamsProps) {
   if (!searchParams?.message) return null;
 
   const type = searchParams.type || 'success';

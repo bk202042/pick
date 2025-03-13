@@ -1,0 +1,160 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  # Allow manual triggering
+  workflow_dispatch:
+  # Run schedule for regression tests (weekly)
+  schedule:
+    - cron: '0 0 * * 0' # Run at midnight every Sunday
+
+jobs:
+  test:
+    name: 'Playwright Tests'
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # Run in multiple browsers
+        browser: [chromium, firefox, webkit]
+        # Split across multiple shards
+        shardIndex: [1, 2, 3, 4]
+        shardTotal: [4]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Run Playwright tests
+        run: npx playwright test --browser=${{ matrix.browser }} --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        env:
+          BASE_URL: ${{ secrets.BASE_URL || 'http://localhost:3000' }}
+          CI: true
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report-${{ matrix.browser }}-${{ matrix.shardIndex }}
+          path: |
+            playwright-report/
+            test-results/
+            traces/
+          retention-days: 30
+
+  merge-reports:
+    name: 'Merge Test Reports'
+    needs: test
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: all-artifacts
+
+      - name: Merge reports
+        run: |
+          npx playwright merge-reports ./all-artifacts/*
+
+      - name: Upload merged report
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-merged-report
+          path: playwright-report/
+          retention-days: 30
+
+  visual-test:
+    name: 'Visual Regression Tests'
+    runs-on: ubuntu-latest
+    # Run visual tests only on main branch or PRs targeting main
+    if: github.ref == 'refs/heads/main' || github.base_ref == 'main'
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Run visual regression tests
+        run: npx playwright test --grep "visual|screenshot" --browser=chromium
+        env:
+          CI: true
+
+      - name: Upload visual test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: visual-test-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 30
+
+  accessibility-test:
+    name: 'Accessibility Tests'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Run accessibility tests
+        run: npx playwright test tests/specs/a11y/ --browser=chromium
+        env:
+          CI: true
+
+      - name: Upload accessibility test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: accessibility-test-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 30

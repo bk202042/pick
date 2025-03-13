@@ -1,8 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { useFormStatus } from 'react';
-import { experimental_useFormState as useFormState } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 
 interface SubmitButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   pendingText?: string;

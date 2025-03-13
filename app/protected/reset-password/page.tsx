@@ -1,10 +1,14 @@
 import { resetPasswordAction } from '@/app/actions';
-import { FormMessage } from '@/components/form-message';
+import { FormMessageFromSearchParams } from '@/components/form-message';
 import { SubmitButton } from '@/components/submit-button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-export default async function ResetPasswordPage({ searchParams: Message }) {
+export default async function ResetPasswordPage({
+  searchParams,
+}: {
+  searchParams?: { message?: string; type?: string };
+}) {
   return (
     <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
       <form
@@ -13,7 +17,7 @@ export default async function ResetPasswordPage({ searchParams: Message }) {
       >
         <h1 className="text-2xl font-semibold tracking-tight">Reset Password</h1>
         <p className="text-sm text-muted-foreground mb-4">Please enter your new password below.</p>
-        <FormMessage searchParams={searchParams} />
+        <FormMessageFromSearchParams searchParams={searchParams} />
         <div className="grid gap-2">
           <Label htmlFor="password">Password</Label>
           <Input type="password" name="password" placeholder="New password" required />

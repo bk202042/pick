@@ -32,7 +32,7 @@ export function SavedListingsList({ savedListings }: SavedListingsListProps) {
     return (
       <div className="text-center py-12">
         <h3 className="text-lg font-semibold mb-2">No Saved Listings</h3>
-        <p className="text-muted-foreground">You haven't saved any properties yet.</p>
+        <p className="text-muted-foreground">You haven&apos;t saved any properties yet.</p>
         <Link
           href="/listings"
           className="inline-block mt-4 px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90"

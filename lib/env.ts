@@ -36,7 +36,9 @@ export function validateEnv() {
     getEnv();
     return true;
   } catch (error) {
-    console.error(error instanceof Error ? error.message : 'Unknown error validating environment variables');
+    console.error(
+      error instanceof Error ? error.message : 'Unknown error validating environment variables'
+    );
     return false;
   }
 }

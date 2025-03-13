@@ -102,3 +102,146 @@ Please file feedback and issues over on the [Supabase GitHub org](https://github
 - [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
 - [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
 - [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
+
+# Playwright Test Suite
+
+A comprehensive end-to-end testing framework for web applications built with Playwright.
+
+## Features
+
+- **End-to-End Testing**: Complete user journey testing from registration to checkout
+- **Accessibility Testing**: Automated accessibility checks using axe-core
+- **Visual Regression Testing**: Screenshot comparison across different viewports and devices
+- **Performance Testing**: Measure and verify performance metrics for critical pages
+- **Multi-Browser Testing**: Run tests across Chromium, Firefox, and WebKit engines
+- **Mobile Emulation**: Test on emulated mobile devices
+- **CI/CD Integration**: GitHub Actions workflows for continuous testing
+
+## Project Structure
+
+```
+tests/
+├── config/
+│   └── playwright.config.ts        # Main configuration file
+├── fixtures/
+│   └── auth.fixture.ts             # Authentication fixtures
+├── specs/
+│   ├── auth/                       # Authentication tests
+│   │   └── login.spec.ts
+│   ├── core-flows/                 # End-to-end user journeys
+│   │   └── user-journey.spec.ts
+│   ├── visual/                     # Visual regression tests
+│   │   └── responsive-design.spec.ts
+│   ├── a11y/                       # Accessibility tests
+│   │   └── accessibility.spec.ts
+│   └── performance/                # Performance tests
+│       └── load-performance.spec.ts
+└── utils/                          # Test utilities
+    ├── roles.ts
+    └── test-data.ts
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 16.x or higher
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Install Playwright browsers:
+
+```bash
+npx playwright install
+```
+
+### Running Tests
+
+Run all tests:
+
+```bash
+npm test
+```
+
+Run specific test groups:
+
+```bash
+# Run accessibility tests
+npm run test:a11y
+
+# Run end-to-end tests
+npm run test:e2e
+
+# Run visual regression tests
+npm run test:visual
+
+# Run performance tests
+npm run test:perf
+```
+
+Run tests in UI mode:
+
+```bash
+npm run test:ui
+```
+
+Run tests in a specific browser:
+
+```bash
+npm run test:chrome
+npm run test:firefox
+npm run test:safari
+```
+
+Run tests on mobile viewports:
+
+```bash
+npm run test:mobile
+```
+
+### Updating Visual Snapshots
+
+After making UI changes that affect the visual appearance:
+
+```bash
+npm run update:snapshots
+```
+
+## CI/CD Integration
+
+The testing suite includes GitHub Actions workflows:
+
+- Main test workflow runs on all pushes and PRs to main/develop branches
+- Visual regression tests run on main branch and PRs targeting main
+- Accessibility tests run on all branches
+- Weekly scheduled regression tests
+
+## Best Practices
+
+This test suite follows these best practices:
+
+1. **Role-based Locators**: Using semantic, accessibility-friendly locators
+2. **Test Independence**: Each test is isolated and can run independently
+3. **Realistic User Flows**: Tests simulate actual user behavior
+4. **Performance Budgets**: Enforcing performance thresholds
+5. **Screenshot Testing**: Visual regression with tolerance for minor differences
+6. **Parallelization**: Tests can run in parallel for faster execution
+
+## Contributing
+
+1. Follow the existing test patterns and conventions
+2. Add meaningful test descriptions
+3. Use fixtures for common setup
+4. Ensure tests are deterministic and not flaky
+
+## License
+
+MIT
