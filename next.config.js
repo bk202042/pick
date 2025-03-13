@@ -8,8 +8,18 @@ const nextConfig = {
     // Explicitly exclude test directories from webpack processing
     config.watchOptions = {
       ...config.watchOptions,
-      ignored: ['**/tests/**', '**/node_modules/**', '**/.git/**'],
+      ignored: ['**/tests/**', '**/node_modules/**', '**/.git/**', '**/*.spec.*', '**/*.test.*', '**/playwright*/**'],
     };
+
+    // Additional exclusion for test-related files
+    if (config.resolve) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        '@playwright/test': false,
+        'playwright': false,
+        '__tests__': false
+      };
+    }
 
     return config;
   },
