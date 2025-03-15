@@ -73,8 +73,8 @@ export default function SignUpUserSteps() {
           <Link href="/sign-up" className="font-bold hover:underline text-foreground/80">
             Sign up
           </Link>{' '}
-          page and sign up your first user. It&apos;s okay if this is just you for now. Your awesome idea
-          will have plenty of users later!
+          page and sign up your first user. It&apos;s okay if this is just you for now. Your
+          awesome project will have plenty of users later!
         </p>
       </TutorialStep>
     </ol>

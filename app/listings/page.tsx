@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { getListings, getPropertyTypes } from '@/data/listings';
+import { getListings } from '@/data/listings';
 import { ListingGrid } from '@/components/listings/listing-grid';
 
 interface SearchParams {

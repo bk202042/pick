@@ -8,10 +8,6 @@ import { ThemeProvider } from 'next-themes';
 import Link from 'next/link';
 import '@/app/globals.css';
 
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-  : 'http://localhost:3000';
-
 export const metadata = {
   title: 'Next.js and Supabase Starter Kit',
   description: 'The fastest way to build apps with Next.js and Supabase',

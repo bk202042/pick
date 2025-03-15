@@ -54,17 +54,17 @@ export default function FetchDataSteps() {
             href="https://supabase.com/dashboard/project/_/editor"
             className="font-bold hover:underline text-foreground/80"
             target="_blank"
-            rel="noreferrer"
+            rel="noreferrer noopener"
           >
             Table Editor
           </a>{' '}
-          for your Supabase project to create a table and insert some example data. If you&apos;re stuck
-          for creativity, you can copy and paste the following into the{' '}
+          for your Supabase project to create a table and insert some example data. If you&apos;re
+          having trouble thinking of what to create, you can copy and paste the following into the{' '}
           <a
             href="https://supabase.com/dashboard/project/_/sql/new"
             className="font-bold hover:underline text-foreground/80"
             target="_blank"
-            rel="noreferrer"
+            rel="noreferrer noopener"
           >
             SQL Editor
           </a>{' '}

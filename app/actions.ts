@@ -1,13 +1,12 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/utils/supabase/server';
-import { z } from 'zod';
-import { headers } from 'next/headers';
+import { headers as nextHeaders } from 'next/headers';
 
 export async function signUpAction(formData: FormData) {
-  const origin = headers().get('origin');
+  const headersList = nextHeaders();
+  const origin = process.env.NEXT_PUBLIC_SITE_URL ?? '';
   const email = formData.get('email')?.toString();
   const password = formData.get('password')?.toString();
 
@@ -15,7 +14,7 @@ export async function signUpAction(formData: FormData) {
     return redirect('/sign-up?message=Missing email or password');
   }
 
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { error } = await supabase.auth.signUp({
     email,
@@ -40,7 +39,7 @@ export async function signInAction(formData: FormData) {
     return redirect('/sign-in?message=Missing email or password');
   }
 
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { error } = await supabase.auth.signInWithPassword({
     email,
@@ -55,14 +54,15 @@ export async function signInAction(formData: FormData) {
 }
 
 export async function forgotPasswordAction(formData: FormData) {
-  const origin = headers().get('origin');
+  const headersList = nextHeaders();
+  const origin = process.env.NEXT_PUBLIC_SITE_URL ?? '';
   const email = formData.get('email')?.toString();
 
   if (!email) {
     return redirect('/forgot-password?message=Email is required');
   }
 
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${origin}/protected/reset-password`,
@@ -87,7 +87,7 @@ export async function resetPasswordAction(formData: FormData) {
     return redirect('/protected/reset-password?type=error&message=Passwords do not match');
   }
 
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { error } = await supabase.auth.updateUser({
     password,
@@ -101,13 +101,7 @@ export async function resetPasswordAction(formData: FormData) {
 }
 
 export async function signOutAction() {
-  const supabase = createClient();
+  const supabase = await createClient();
   await supabase.auth.signOut();
   return redirect('/sign-in');
-}
-
-function headers() {
-  return new Headers({
-    'x-url': 'http://localhost:3000',
-  });
 }

@@ -3,6 +3,11 @@ const nextConfig = {
   // Exclude test directories from being processed by Next.js
   pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
 
+  // Configure allowed image domains
+  images: {
+    domains: ['placehold.co'],
+  },
+
   // Exclude test files and directories from being included in the build
   webpack(config, { isServer }) {
     // Explicitly exclude test directories from webpack processing

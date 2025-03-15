@@ -4,10 +4,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import Link from 'next/link';
 
-interface ForgotPasswordPageProps {
-  searchParams?: Record<string, string>;
-}
-
 export default function ForgotPasswordPage() {
   return (
     <div className="w-full max-w-md">
